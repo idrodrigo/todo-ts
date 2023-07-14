@@ -1,16 +1,16 @@
-import { type TodoTitle } from '../types'
+import { type TodoTitle } from '../../types'
 import { useState } from 'react'
 
 interface Props {
-  saveTodo: ({ title }: TodoTitle) => void
+  onAddTodo: ({ title }: TodoTitle) => void
 }
 
-export const CreateTodo: React.FC<Props> = ({ saveTodo }) => {
+export const CreateTodo: React.FC<Props> = ({ onAddTodo }) => {
   const [inputValue, setInputValue] = useState<TodoTitle>({ title: '' })
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (event.key === 'Enter' && inputValue.title !== '') {
-      saveTodo(inputValue)
+      onAddTodo(inputValue)
       setInputValue({ title: '' })
     }
   }
