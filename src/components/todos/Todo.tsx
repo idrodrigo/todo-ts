@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { type TodoId, type Todo as TodoType } from '../../types'
+import { styled } from 'styled-components'
 
 interface Props {
   id: string
@@ -58,10 +59,10 @@ export const Todo: React.FC<Props> = ({
           onChange={(e) => { setCompleted({ id, completed: e.target.checked }) }}
         />
         <label>{title}</label>
-        <button className='destroy' onClick={() => { onRemoveTodo({ id }) }}></button>
+        <TodoButton className='destroy' onClick={() => { onRemoveTodo({ id }) }}></TodoButton>
       </div>
 
-      <input
+      <TodoEdit
         className='edit'
         value={editedTitle}
         onChange={(e) => { setEditedTitle(e.target.value) }}
@@ -72,3 +73,35 @@ export const Todo: React.FC<Props> = ({
     </>
   )
 }
+
+export const TodoEdit = styled.input`
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4em;
+  color: inherit;
+  padding: 6px;
+  border: 1px solid #999;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+`
+export const TodoButton = styled.button`
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+`

@@ -1,3 +1,4 @@
+import { styled } from 'styled-components'
 import { TODO_FILTERS } from '../../consts.js'
 import { type FilterOption } from '../../types.js'
 
@@ -19,7 +20,7 @@ export const Filters: React.FC<Props> = ({ filterSelected, handleFilterChange })
   }
 
   return (
-    <ul className="filters">
+    <TodoFiltersUl className='filters'>
       {
         Object.entries(FILTERS_BUTTONS).map(([key, { href, label }]) => {
           const isSelected = key === filterSelected
@@ -38,6 +39,39 @@ export const Filters: React.FC<Props> = ({ filterSelected, handleFilterChange })
           )
         })
       }
-    </ul>
+    </TodoFiltersUl>
   )
 }
+
+const TodoFiltersUl = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  left: 0;
+  @media (max-width: 430px) {
+  bottom: 10px;
+}
+
+li {
+  display: inline;
+}
+
+li a {
+  color: inherit;
+  margin: 3px;
+  padding: 3px 7px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+li a:hover {
+  border-color: #abf7ab;
+}
+
+li a.selected {
+  border-color: #00ff00;
+}
+`

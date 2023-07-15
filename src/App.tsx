@@ -2,8 +2,10 @@ import { Todos } from './components/todos/Todos'
 import { Footer } from './components/footer/Footer'
 import { Header } from './components/header/Header'
 import { useTodos } from './hooks/useTodos'
+import { styled } from 'styled-components'
+import { Info } from './components/Info'
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const {
     activeCount,
     completedCount,
@@ -19,7 +21,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <div className='todoapp'>
+      <TodoApp className='todoapp'>
         <Header onAddTodo={handleAddTodo} />
         <Todos
           onRemoveTodo={handleRemove}
@@ -34,9 +36,16 @@ const App: React.FC = () => {
           filterSelected={filterSelected}
           onClearCompleted={handleClearCompleted}
         />
-      </div>
+      </TodoApp>
+      <Info />
     </>
   )
 }
 
-export default App
+const TodoApp = styled.div`
+  background: #fff;
+  margin: 130px 0 40px 0;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 25px 50px 0 rgba(0, 0, 0, 0.1);
+`
