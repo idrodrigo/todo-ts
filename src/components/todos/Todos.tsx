@@ -63,7 +63,7 @@ const TodoList = styled.ul`
   }
   li {
   position: relative;
-  font-size: 24px;
+  font-size: 18px;
   border-bottom: 1px solid #ededed;
   }
   li:last-child {
@@ -74,6 +74,7 @@ const TodoList = styled.ul`
   padding: 0;
   }
   li.editing .edit {
+  font-size: 20px;
   display: block;
   width: calc(100% - 43px);
   padding: 12px 16px;
@@ -117,7 +118,7 @@ li label {
   display: block;
   line-height: 1.2;
   transition: color 0.4s;
-  font-weight: 400;
+  font-weight: 600;
   color: #484848;
 }
 

@@ -27,9 +27,9 @@ const Todoh1 = styled.h1`
   top: -140px;
   width: 100%;
   font-size: 80px;
-  font-weight: 200;
+  font-weight: 400;
   text-align: center;
-  color: #b83f45;
+  color: yellowgreen;
   -webkit-text-rendering: optimizeLegibility;
   -moz-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
