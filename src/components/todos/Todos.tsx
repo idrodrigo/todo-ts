@@ -2,48 +2,56 @@ import { Todo } from './Todo'
 import type { TodoId, Todo as TodoType } from '../../types'
 import { useState } from 'react'
 import { styled } from 'styled-components'
+import Loader from './Loader'
 
 interface Props {
   todos: TodoType[]
   setCompleted: ({ id, completed }: Pick<TodoType, 'id' | 'completed'>) => void
   setTitle: (params: Omit<TodoType, 'completed'>) => void
   onRemoveTodo: ({ id }: TodoId) => void
+  isLoading: boolean
 }
 
 export const Todos: React.FC<Props> = ({
   todos,
   setCompleted,
   setTitle,
-  onRemoveTodo
+  onRemoveTodo,
+  isLoading
 }) => {
   const [isEditing, setIsEditing] = useState('')
 
   return (
     <TodoMain className='main'>
-    <TodoList className='todo-list'>
-      {todos?.map((todo) => (
-        <li
-          key={todo.id}
-          onDoubleClick={() => { setIsEditing(todo.id) }}
-          className={`
-            ${todo.completed ? 'completed' : ''}
-            ${isEditing === todo.id ? 'editing' : ''}
-          `}
-        >
-          <Todo
+      {
+        isLoading
+          ? <Loader />
+          : <TodoList className='todo-list'>
+        {todos?.map((todo) => (
+          <li
             key={todo.id}
-            id={todo.id}
-            title={todo.title}
-            completed={todo.completed}
-            setCompleted={setCompleted}
-            setTitle={setTitle}
-            onRemoveTodo={onRemoveTodo}
-            isEditing={isEditing}
-            setIsEditing={setIsEditing}
-          />
-        </li>
-      ))}
-    </TodoList>
+            onDoubleClick={() => { setIsEditing(todo.id) }}
+            className={`
+              ${todo.completed ? 'completed' : ''}
+              ${isEditing === todo.id ? 'editing' : ''}
+            `}
+          >
+            <Todo
+              key={todo.id}
+              id={todo.id}
+              title={todo.title}
+              completed={todo.completed}
+              setCompleted={setCompleted}
+              setTitle={setTitle}
+              onRemoveTodo={onRemoveTodo}
+              isEditing={isEditing}
+              setIsEditing={setIsEditing}
+            />
+          </li>
+        ))}
+      </TodoList>
+      }
+
     </TodoMain>
   )
 }
@@ -58,7 +66,7 @@ const TodoList = styled.ul`
   padding: 0;
   list-style: none;
   .toggle:focus+label {
-  box-shadow: 0 0 2px 2px #00ff00;
+  box-shadow: 0 0 2px 2px #1ED760;
   outline: 0;
   }
   li {

@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import { TODO_FILTERS } from '../consts'
 import { fetchTodos, updateTodos } from '../services/todos'
 import { type TodoList, type FilterOption, type TodoTitle, type Todo as TodoType, type TodoId } from '../types'
@@ -22,6 +22,7 @@ const initialState = {
 }
 
 export const useTodos = (): {
+  isLoading: boolean
   activeCount: number
   completedCount: number
   todos: TodoList
@@ -34,6 +35,7 @@ export const useTodos = (): {
   handleUpdateTitle: ({ id, title }: Pick<TodoType, 'id' | 'title'>) => void
 } => {
   const [{ sync, todos, filterSelected }, dispatch] = useReducer(todosReducer, initialState)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const handleCompletedTodo = (
     { id, completed }: Pick<TodoType, 'id' | 'completed'>
@@ -81,11 +83,16 @@ export const useTodos = (): {
   const activeCount = todos.length - completedCount
 
   useEffect(() => {
+    setIsLoading(true)
     fetchTodos()
       .then(todos => {
         dispatch({ type: 'INIT_TODOS', payload: { todos } })
       })
       .catch(err => { console.error(err) })
+      .finally(() => {
+        setIsLoading(false)
+      }
+      )
   }, [])
 
   useEffect(() => {
@@ -95,6 +102,7 @@ export const useTodos = (): {
   }, [todos, sync])
 
   return {
+    isLoading,
     activeCount,
     completedCount,
     filterSelected,

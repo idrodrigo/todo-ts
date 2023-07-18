@@ -72,6 +72,6 @@ li a:hover {
 }
 
 li a.selected {
-  border-color: #00ff00;
+  border-color: #1ED760;
 }
 `

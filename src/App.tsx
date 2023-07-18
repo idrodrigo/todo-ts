@@ -16,7 +16,8 @@ export const App: React.FC = () => {
     handleRemove,
     handleAddTodo,
     handleUpdateTitle,
-    todos: filteredTodos
+    todos: filteredTodos,
+    isLoading
   } = useTodos()
 
   return (
@@ -28,6 +29,7 @@ export const App: React.FC = () => {
           setCompleted={handleCompletedTodo}
           setTitle={handleUpdateTitle}
           todos={filteredTodos}
+          isLoading={isLoading}
         />
         <Footer
           handleFilterChange={handleFilterChange}
