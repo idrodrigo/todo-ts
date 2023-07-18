@@ -45,11 +45,11 @@ export const Footer: React.FC<Props> = ({
 }
 
 const TodoFooter = styled.footer`
-padding: 10px 15px;
+  padding: 10px 15px;
   height: 20px;
   text-align: center;
   font-size: 15px;
-  border-top: 2px solid #e6e6e6;
+  border-top: 2px solid rgba(0,0,0,0.03);;
   @media (max-width: 430px) {
     height: 50px;
   }
@@ -69,9 +69,11 @@ padding: 10px 15px;
 }
 `
 const TodoCount = styled.span`
+  color: #2D79C7;
   float: left;
   text-align: left;
 strong {
+  color: #1ED760;
   font-weight: 300;
 }
 `
@@ -83,5 +85,6 @@ const ClearButton = styled(TodoButton)`
   cursor: pointer;
   &:hover {
   text-decoration: underline;
+  text-decoration-color: #1ED760;
   }
 `

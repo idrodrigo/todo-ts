@@ -89,6 +89,10 @@ export const TodoEdit = styled.input`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  &:focus {
+  box-shadow: 0 0 2px 2px #1ED760;
+  outline: 0;
+  }
 `
 export const TodoButton = styled.button`
   margin: 0;

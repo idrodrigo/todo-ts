@@ -59,7 +59,6 @@ export const Todos: React.FC<Props> = ({
 const TodoMain = styled.main`
   position: relative;
   z-index: 2;
-  border-top: 2px solid #e6e6e6;
 `
 const TodoList = styled.ul`
   margin: 0;
@@ -151,7 +150,7 @@ li .destroy {
 
 li .destroy:hover,
 .todo-list li .destroy:focus {
-  color: #C18585;
+  color: #cc4848;
 }
 
 li .destroy:after {
