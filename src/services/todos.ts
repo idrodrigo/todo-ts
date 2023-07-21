@@ -1,4 +1,4 @@
-import { type ListOfTodos } from '../types'
+import { type TodoList } from '../types'
 
 // const API_URL = 'https://api.jsonbin.io/v3/b/64b093bd9d312622a37f1986' // public
 const API_URL = 'https://api.jsonbin.io/v3/b/64b092feb89b1e2299be9019' // private
@@ -27,7 +27,7 @@ export const fetchTodos = async (): Promise<Todo[]> => {
   return todos
 }
 
-export const updateTodos = async ({ todos }: { todos: ListOfTodos }): Promise<boolean> => {
+export const updateTodos = async ({ todos }: { todos: TodoList }): Promise<boolean> => {
   // console.log(import.meta.env.VITE_API_BIN_KEY)
   const res = await fetch(API_URL, {
     method: 'PUT',
